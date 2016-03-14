@@ -1,24 +1,41 @@
 package pl.spring.demo.web.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import pl.spring.demo.service.BookService;
-import pl.spring.demo.to.BookTo;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-import java.util.Map;
+import pl.spring.demo.service.BookSearchCriteriaService;
+import pl.spring.demo.service.BookService;
+import pl.spring.demo.to.BookSearchCriteria;
+import pl.spring.demo.to.BookTo;
 
 @Controller
 public class BookController {
-    @Autowired
-    private BookService bookService;
+	
+	@Autowired
+	private BookService bookService;
+	
+	@Autowired 
+	public BookSearchCriteriaService bookSearchCriteriaService;
 
-    @RequestMapping(value = "/books", method = RequestMethod.GET)
-    public String bookList(Map<String, Object> params) {
-        final List<BookTo> allBooks = bookService.findAllBooks();
-        params.put("books", allBooks);
-        return "bookList";
-    }
+	@RequestMapping(value = "/books", method = RequestMethod.GET)
+	public String bookList(Map<String, Object> params) {
+		final List<BookTo> allBooks = bookService.findAllBooks();
+		params.put("books", allBooks);
+		return "bookList";
+	}
+
+	@RequestMapping(value = "/booksCriteria", method = RequestMethod.GET)
+	public String getProductsByFilter(@RequestParam(value = "search") BookSearchCriteria bookSearchCriteria,
+			Map<String, Object> params) {
+		final List<BookTo> booksByCriteria = bookSearchCriteriaService.findBookByCriteria(bookSearchCriteria);
+		params.put("books", booksByCriteria);
+		return "bookList";
+	}
+
 }
