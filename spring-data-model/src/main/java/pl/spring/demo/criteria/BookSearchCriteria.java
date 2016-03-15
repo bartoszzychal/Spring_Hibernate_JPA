@@ -1,4 +1,4 @@
-package pl.spring.demo.to;
+package pl.spring.demo.criteria;
 //title, author, libraryName. 
 public class BookSearchCriteria {
 	
