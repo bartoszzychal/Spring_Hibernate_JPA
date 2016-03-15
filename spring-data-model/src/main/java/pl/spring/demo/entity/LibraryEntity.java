@@ -10,10 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name = "LIBRARY")
@@ -25,8 +23,7 @@ public class LibraryEntity {
 	@Column(name = "NAME",nullable = false, length = 50)
 	private String name;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "LIBRARY_ID", nullable = false,updatable = false)
+	@OneToMany(mappedBy="library", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<BookEntity> books = new HashSet<>();
 
 	public LibraryEntity() {
@@ -60,4 +57,6 @@ public class LibraryEntity {
 	public void setBooks(Set<BookEntity> books) {
 		this.books = books;
 	}
+	
+	
 }
