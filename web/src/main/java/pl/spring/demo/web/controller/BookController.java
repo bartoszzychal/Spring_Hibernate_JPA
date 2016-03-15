@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import pl.spring.demo.to.BookSearchCriteria;
+import pl.spring.demo.criteria.BookSearchCriteria;
 import pl.spring.demo.service.BookSearchCriteriaService;
 import pl.spring.demo.service.BookService;
 import pl.spring.demo.to.BookTo;
