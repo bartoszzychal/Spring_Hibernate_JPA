@@ -1,14 +1,17 @@
 package pl.spring.demo.repository.predicates;
 
 import com.mysema.query.BooleanBuilder;
+import com.mysema.query.jpa.JPASubQuery;
 import com.mysema.query.types.expr.BooleanExpression;
 
 import pl.spring.demo.criteria.BookSearchCriteria;
+import pl.spring.demo.entity.QAuthorEntity;
 import pl.spring.demo.entity.QBookEntity;
 
 public class BookPredicate {
 
 	public static final QBookEntity bookEntity = QBookEntity.bookEntity;
+	public static final QAuthorEntity authorEntity = QAuthorEntity.authorEntity;
 
 	public static BooleanBuilder preparePredicate(BookSearchCriteria bookSearchCriteria){
 		BooleanBuilder where = new BooleanBuilder();
@@ -30,8 +33,12 @@ public class BookPredicate {
 
 	public static BooleanExpression bookHasAuthorLike(String author) {
 		String[] author_ = author.split(" ",2);
-		return bookEntity.authors.any().firstName.likeIgnoreCase(author_[0])
-				.and(bookEntity.authors.any().lastName.likeIgnoreCase(author_[1]));
+		return bookEntity.authors.contains(
+				new JPASubQuery()
+				.from(authorEntity)
+				.where(authorEntity.firstName.like(author_[0]).and(authorEntity.lastName.like(author_[1])))
+				.unique(authorEntity)
+				);
 	}
 	
 	public static BooleanExpression bookHasTitleLike(String title) {
