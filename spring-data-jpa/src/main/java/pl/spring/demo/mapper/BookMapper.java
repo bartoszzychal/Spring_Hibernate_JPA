@@ -3,6 +3,7 @@ package pl.spring.demo.mapper;
 import pl.spring.demo.entity.AuthorEntity;
 import pl.spring.demo.entity.BookEntity;
 import pl.spring.demo.to.BookTo;
+import pl.spring.demo.to.LibraryTo;
 
 import java.util.Collection;
 import java.util.List;
@@ -12,7 +13,7 @@ public class BookMapper {
 
     public static BookTo map(BookEntity bookEntity) {
         if (bookEntity != null) {
-            return new BookTo(bookEntity.getId(), bookEntity.getTitle(), mapAuthors(bookEntity.getAuthors()));
+            return new BookTo(bookEntity.getId(), bookEntity.getTitle(), mapAuthors(bookEntity.getAuthors()),LibraryMapper.map2Name(bookEntity.getLibrary()));
         }
         return null;
     }
@@ -39,4 +40,5 @@ public class BookMapper {
         }
         return null;
     }
+   
 }
