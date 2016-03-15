@@ -11,6 +11,11 @@ public class BookSearchCriteria {
 		this.author = author;
 		this.libraryName = libraryName;
 	}
+	
+	
+	public BookSearchCriteria() {
+	}
+
 	public String getTitle() {
 		return title;
 	}
