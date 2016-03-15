@@ -17,10 +17,10 @@ import pl.spring.demo.to.BookTo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "CommonServiceTest-context.xml")
-public class BookSearchCriteriaServiceTest {
+public class BookServiceTest {
 
 	@Autowired
-	private BookSearchCriteriaService bookSearchCriteriaService;
+	private BookService bookService;
 
 	@Test
 	public void testShouldFindAllBookByCriteria() {
@@ -28,7 +28,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = null;
 		String libraryName = null;
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteria(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteria(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(4, findBookByCriteria.size());
@@ -41,7 +41,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = null;
 		String libraryName = null;
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteria(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteria(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(1, findBookByCriteria.size());
@@ -54,7 +54,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = "Zbigniew Nowak";
 		String libraryName = null;
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteria(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteria(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(1, findBookByCriteria.size());
@@ -67,7 +67,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = null;
 		String libraryName = "Biblioteka Miejska";
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteria(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteria(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(3, findBookByCriteria.size());
@@ -82,7 +82,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = "Jan Kowalski";
 		String libraryName = null;
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteria(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteria(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(1, findBookByCriteria.size());
@@ -96,7 +96,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = null;
 		String libraryName = "Biblioteka Miejska";
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteria(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteria(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(1, findBookByCriteria.size());
@@ -111,7 +111,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = "Jan Kowalski";
 		String libraryName = "Biblioteka Miejska";
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteria(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteria(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(1, findBookByCriteria.size());
@@ -126,7 +126,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = "Jan Kowalski";
 		String libraryName = "Biblioteka Miejska";
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteria(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteria(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(1, findBookByCriteria.size());
@@ -142,7 +142,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = null;
 		String libraryName = null;
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteriaRepo(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaRepo(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(4, findBookByCriteria.size());
@@ -155,7 +155,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = null;
 		String libraryName = null;
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteriaRepo(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaRepo(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(1, findBookByCriteria.size());
@@ -168,7 +168,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = "Zbigniew Nowak";
 		String libraryName = null;
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteriaRepo(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaRepo(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(1, findBookByCriteria.size());
@@ -181,7 +181,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = null;
 		String libraryName = "Biblioteka Miejska";
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteriaRepo(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaRepo(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(3, findBookByCriteria.size());
@@ -196,7 +196,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = "Jan Kowalski";
 		String libraryName = null;
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteriaRepo(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaRepo(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(1, findBookByCriteria.size());
@@ -210,7 +210,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = null;
 		String libraryName = "Biblioteka Miejska";
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteriaRepo(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaRepo(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(1, findBookByCriteria.size());
@@ -224,7 +224,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = "Jan Kowalski";
 		String libraryName = "Biblioteka Miejska";
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteriaRepo(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaRepo(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(1, findBookByCriteria.size());
@@ -238,7 +238,7 @@ public class BookSearchCriteriaServiceTest {
 		String author = "Jan Kowalski";
 		String libraryName = "Biblioteka Miejska";
 		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
-		List<BookTo> findBookByCriteria = bookSearchCriteriaService.findBookByCriteriaRepo(bookSearchCriteria);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaRepo(bookSearchCriteria);
 		assertNotNull(findBookByCriteria);
 		assertFalse(findBookByCriteria.isEmpty());
 		assertEquals(1, findBookByCriteria.size());
