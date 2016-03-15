@@ -39,7 +39,7 @@ public class LibraryRepositoryTest {
 		//then
 		assertNotEquals(numberOfBooks,0);
 		assertNull(libraryRepository.findOne(libraryId));
-		assertNotEquals(numberOfBooks, bookRepository.findAll().size());
+		assertTrue(numberOfBooks>bookRepository.findAll().size());
 	}
 	
 	@Test
