@@ -12,6 +12,6 @@ public interface BookService {
     List<BookTo> findBooksByAuthor(String author);
     List<BookTo> findBookByCriteria(BookSearchCriteria bookSearchCriteria);
 	List<BookTo> findBookByCriteriaRepo(BookSearchCriteria bookSearchCriteria);
-	
+	List<BookTo> findBookByCriteriaJinq(BookSearchCriteria bookSearchCriteria);
     BookTo saveBook(BookTo book);
 }
