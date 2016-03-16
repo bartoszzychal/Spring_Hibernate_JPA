@@ -16,13 +16,16 @@ public class BookPredicate {
 	public static BooleanBuilder preparePredicate(BookSearchCriteria bookSearchCriteria){
 		BooleanBuilder where = new BooleanBuilder();
 		if(bookSearchCriteria.getTitle()!= null){
-			where.and(bookHasTitleLike(bookSearchCriteria.getTitle()));
+			String title = bookSearchCriteria.getTitle();
+			where.and(bookHasTitleLike(title));
 		}
 		if(bookSearchCriteria.getAuthor()!= null){
-			where.and(bookHasAuthorLike(bookSearchCriteria.getAuthor()));
+			String author = bookSearchCriteria.getAuthor();
+			where.and(bookHasAuthorLike(author));
 		}
 		if(bookSearchCriteria.getLibraryName()!= null){
-			where.and(bookInLibraryLike(bookSearchCriteria.getLibraryName()));
+			String libraryName = bookSearchCriteria.getLibraryName();
+			where.and(bookInLibraryLike(libraryName));
 		}
 		return where;
 	}
@@ -33,10 +36,12 @@ public class BookPredicate {
 
 	public static BooleanExpression bookHasAuthorLike(String author) {
 		String[] author_ = author.split(" ",2);
+		String firstName = author_[0];
+		String lastName = author_[1];
 		return bookEntity.authors.contains(
 				new JPASubQuery()
 				.from(authorEntity)
-				.where(authorEntity.firstName.like(author_[0]).and(authorEntity.lastName.like(author_[1])))
+				.where(authorEntity.firstName.like(firstName).and(authorEntity.lastName.like(lastName)))
 				.unique(authorEntity)
 				);
 	}
