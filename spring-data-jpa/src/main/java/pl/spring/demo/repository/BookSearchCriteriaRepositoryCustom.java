@@ -7,4 +7,5 @@ import pl.spring.demo.entity.BookEntity;
 
 public interface BookSearchCriteriaRepositoryCustom {
 	List<BookEntity> findBookByCriteria(BookSearchCriteria bookSearchCriteria);
+	List<BookEntity> findBookByCriteriaJinq(BookSearchCriteria bookSearchCriteria);
 }
