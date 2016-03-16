@@ -48,10 +48,13 @@ public class BookRepositoryImpl implements BookSearchCriteriaRepositoryCustom{
 		}
 		if(bookSearchCriteria.getAuthor() != null){
 			String author = bookSearchCriteria.getAuthor().toLowerCase();
-			stream = stream.where((book,authors) -> JPQL.isIn(author, authors.stream(AuthorEntity.class)
-													.where((a) -> book.getAuthors().contains(a))
-													.select((a) -> (a.getFirstName()+" "+a.getLastName()).toLowerCase())
-													)
+			stream = stream.where((book,authors) ->
+				JPQL.isIn(
+						author, 
+						authors.stream(AuthorEntity.class)
+						.where((a) -> book.getAuthors().contains(a))
+						.select((a) -> (a.getFirstName()+" "+a.getLastName()).toLowerCase())
+						)
 					);
 					
 		}
