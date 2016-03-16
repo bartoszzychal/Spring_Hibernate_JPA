@@ -61,4 +61,13 @@ public class BookServiceImpl implements BookService {
 	public List<BookTo> findBookByCriteriaRepo(BookSearchCriteria bookSearchCriteria) {
 		return BookMapper.map2To(bookRepository.findBookByCriteria(bookSearchCriteria));
 	}
+
+	@Override
+	public List<BookTo> findBookByCriteriaJinq(BookSearchCriteria bookSearchCriteria) {
+		return BookMapper.map2To(bookRepository.findBookByCriteriaJinq(bookSearchCriteria));
+	}
+	
+	
+	
+	
 }
