@@ -1,11 +1,9 @@
 package pl.spring.demo.repository.impl;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
 
 import org.jinq.jpa.JPAJinqStream;
 import org.jinq.jpa.JPQL;
