@@ -247,6 +247,117 @@ public class BookServiceTest {
 		assertEquals(bookSearchCriteria.getLibraryName(),findBookByCriteria.get(0).getLibraryName());
 
 	}
+	@Test
+	public void testShouldFindAllBookByCriteriaJinq() {
+		String title = null;
+		String author = null;
+		String libraryName = null;
+		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaJinq(bookSearchCriteria);
+		assertNotNull(findBookByCriteria);
+		assertFalse(findBookByCriteria.isEmpty());
+		assertEquals(4, findBookByCriteria.size());
+	}
+	
+	@Test
+	
+	public void testShouldFindBookByCriteriaJinqTitle() {
+		String title = "Pierwsza książka";
+		String author = null;
+		String libraryName = null;
+		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaJinq(bookSearchCriteria);
+		assertNotNull(findBookByCriteria);
+		assertFalse(findBookByCriteria.isEmpty());
+		assertEquals(1, findBookByCriteria.size());
+		assertEquals(bookSearchCriteria.getTitle(), findBookByCriteria.get(0).getTitle());
+	}
+	
+	@Test
+	public void testShouldFindBookByCriteriaJinqAuthor() {
+		String title = null;
+		String author = "Zbigniew Nowak";
+		String libraryName = null;
+		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaJinq(bookSearchCriteria);
+		assertNotNull(findBookByCriteria);
+		assertFalse(findBookByCriteria.isEmpty());
+		assertEquals(1, findBookByCriteria.size());
+		assertEquals(bookSearchCriteria.getAuthor(), findBookByCriteria.get(0).getAuthors());
+	}
+	
+	@Test
+	public void testShouldFindBookByCriteriaJinqLibraryName() {
+		String title = null;
+		String author = null;
+		String libraryName = "Biblioteka Miejska";
+		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaJinq(bookSearchCriteria);
+		assertNotNull(findBookByCriteria);
+		assertFalse(findBookByCriteria.isEmpty());
+		assertEquals(3, findBookByCriteria.size());
+		for (BookTo bookTo : findBookByCriteria) {
+			assertEquals(bookSearchCriteria.getLibraryName(), bookTo.getLibraryName());
+		}
+	}
+	
+	@Test
+	public void testShouldFindBookByCriteriaJinqTitleAuthor() {
+		String title = "Pierwsza książka";
+		String author = "Jan Kowalski";
+		String libraryName = null;
+		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaJinq(bookSearchCriteria);
+		assertNotNull(findBookByCriteria);
+		assertFalse(findBookByCriteria.isEmpty());
+		assertEquals(1, findBookByCriteria.size());
+		assertEquals(bookSearchCriteria.getTitle(), findBookByCriteria.get(0).getTitle());
+		assertEquals(bookSearchCriteria.getAuthor(), findBookByCriteria.get(0).getAuthors());
+	}
+	
+	@Test
+	public void testShouldFindBookByCriteriaJinqTitleLibrary() {
+		String title = "Pierwsza książka";
+		String author = null;
+		String libraryName = "Biblioteka Miejska";
+		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaJinq(bookSearchCriteria);
+		assertNotNull(findBookByCriteria);
+		assertFalse(findBookByCriteria.isEmpty());
+		assertEquals(1, findBookByCriteria.size());
+		assertEquals(bookSearchCriteria.getTitle(), findBookByCriteria.get(0).getTitle());
+		assertEquals(bookSearchCriteria.getLibraryName(),findBookByCriteria.get(0).getLibraryName());
+	}
+	
+	@Test
+	public void testShouldFindBookByCriteriaJinqAuthorLibrary() {
+		String title = null;
+		String author = "Jan Kowalski";
+		String libraryName = "Biblioteka Miejska";
+		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaJinq(bookSearchCriteria);
+		assertNotNull(findBookByCriteria);
+		assertFalse(findBookByCriteria.isEmpty());
+		assertEquals(1, findBookByCriteria.size());
+		assertEquals(bookSearchCriteria.getAuthor(), findBookByCriteria.get(0).getAuthors());
+		assertEquals(bookSearchCriteria.getLibraryName(),findBookByCriteria.get(0).getLibraryName());
+	}
+	
+	@Test
+	public void testShouldFindBookByCriteriaJinqTitleAuthorLibrary() {
+		String title = "Pierwsza książka";
+		String author = "Jan Kowalski";
+		String libraryName = "Biblioteka Miejska";
+		BookSearchCriteria bookSearchCriteria = new BookSearchCriteria(title, author, libraryName);
+		List<BookTo> findBookByCriteria = bookService.findBookByCriteriaJinq(bookSearchCriteria);
+		assertNotNull(findBookByCriteria);
+		assertFalse(findBookByCriteria.isEmpty());
+		assertEquals(1, findBookByCriteria.size());
+		assertEquals(bookSearchCriteria.getTitle(), findBookByCriteria.get(0).getTitle());
+		assertEquals(bookSearchCriteria.getAuthor(), findBookByCriteria.get(0).getAuthors());
+		assertEquals(bookSearchCriteria.getLibraryName(),findBookByCriteria.get(0).getLibraryName());
+		
+	}
 
 
 }
