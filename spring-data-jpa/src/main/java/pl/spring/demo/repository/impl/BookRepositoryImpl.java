@@ -56,7 +56,6 @@ public class BookRepositoryImpl implements BookSearchCriteriaRepositoryCustom{
 						.select((a) -> (a.getFirstName()+" "+a.getLastName()).toLowerCase())
 						)
 					);
-					
 		}
 		if(bookSearchCriteria.getLibraryName() != null){
 			String libraryName = bookSearchCriteria.getLibraryName().toLowerCase();
